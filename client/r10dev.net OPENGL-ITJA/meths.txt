@@ -1,0 +1,11 @@
+ms_lpd3dDevice->GetVertexShader
+ms_lpd3dDevice->SetVertexShader
+ms_lpd3dDevice->Clear
+ms_lpd3dDevice->Clear
+ms_lpd3dDevice->Present
+ms_lpd3dDevice->Present
+ms_lpd3dDevice->Present
+ms_lpd3dDevice->Present
+ms_lpd3dDevice->Present
+ms_lpd3dDevice->Present
+ms_lpd3dDevice->Present

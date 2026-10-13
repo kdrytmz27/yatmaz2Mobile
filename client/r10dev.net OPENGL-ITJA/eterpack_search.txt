@@ -1,0 +1,333 @@
+clientsource/EterLib/TextFileLoader.cpp:#include "../eterPack/EterPackManager.h"
+clientsource/EterLib/TextFileLoader.cpp:	if (!CEterPackManager::Instance().Get(kFile, c_szFileName, &pvData))
+clientsource/EterLib/GrpImageTexture.cpp:#include "../eterPack/EterPackManager.h"
+clientsource/EterLib/GrpImageTexture.cpp:		if (!CEterPackManager::Instance().Get(mappedFile, m_stFileName.c_str(), &c_pvMap))
+clientsource/EterLib/ResourceManager.cpp:#include "../eterPack/EterPackManager.h"
+clientsource/EterLib/ResourceManager.cpp:	return CEterPackManager::Instance().isExist(c_szFileName);
+clientsource/EterLib/Resource.cpp:#include "../eterPack/EterPackManager.h"
+clientsource/EterLib/Resource.cpp:	if (CEterPackManager::Instance().Get(file, c_szFileName, &fileData))
+clientsource/EterLib/Resource.cpp:	if (CEterPackManager::Instance().Get(file, GetFileName(), &fileData))
+clientsource/EterLib/Util.cpp:#include "../eterPack/EterPackManager.h"
+clientsource/EterLib/Util.cpp:	if (!CEterPackManager::Instance().Get(File, c_szFileName, &pMotionData))
+clientsource/EterLib/Util.cpp:	if (!CEterPackManager::Instance().Get(File, c_szFileName, &pModelData))
+clientsource/EterLib/FileLoaderThread.cpp:#include "../EterPack/EterPackManager.h"
+clientsource/EterLib/FileLoaderThread.cpp:	if (CEterPackManager::Instance().Get(pData->File, pData->stFileName.c_str(), &pvBuf))
+clientsource/SpeedTreeLib/SpeedTreeForest.cpp:#include "../eterPack/EterPackManager.h"
+clientsource/SpeedTreeLib/SpeedTreeForest.cpp:		if (!CEterPackManager::Instance().Get(file, c_pszFileName, &c_pvData))
+clientsource/UserInterface/PythonNonPlayer.cpp:#include "../eterPack/EterPackManager.h"
+clientsource/UserInterface/PythonNonPlayer.cpp:	if (!CEterPackManager::Instance().Get(file, c_szFileName, &pvData))
+clientsource/UserInterface/Locale.cpp:#include "../eterpack/EterPackManager.h"
+clientsource/UserInterface/Locale.cpp:			if (CEterPackManager::Instance().isExist(szLocalePath)) {
+clientsource/UserInterface/Locale.cpp:		if (CEterPackManager::Instance().isExist(szLocalePath)) {
+clientsource/UserInterface/PythonMiniMap.cpp:#include "../EterPack/EterPackManager.h"
+clientsource/UserInterface/PythonMiniMap.cpp:	if (!CEterPackManager::Instance().isExist(atlasFileName))
+clientsource/UserInterface/PythonNetworkStreamModule.cpp:PyObject* netSendPartyParameterPacket(PyObject* poSelf, PyObject* poArgs)
+clientsource/UserInterface/PythonNetworkStreamModule.cpp:	rns.SendPartyParameterPacket(iMode);
+clientsource/UserInterface/PythonNetworkStreamModule.cpp:		{ "SendPartyParameterPacket",			netSendPartyParameterPacket,			METH_VARARGS },
+clientsource/UserInterface/PythonPackModule.cpp:#include "../eterPack/EterPackManager.h"
+clientsource/UserInterface/PythonPackModule.cpp:	return Py_BuildValue("i", CEterPackManager::Instance().isExist(strFileName) ? 1 : 0);
+clientsource/UserInterface/PythonPackModule.cpp:			if (CEterPackManager::Instance().Get(file, strFileName, &pData))
+clientsource/UserInterface/PythonSkill.cpp:#include "../EterPack/EterPackManager.h"
+clientsource/UserInterface/PythonSkill.cpp:	if (!CEterPackManager::Instance().Get(kFile, c_szFileName, &pvData))
+clientsource/UserInterface/PythonSkill.cpp:	if (!CEterPackManager::Instance().Get(kFile, c_szFileName, &pvData))
+clientsource/UserInterface/PythonNetworkStreamPhaseGame.cpp:#include "../EterPack/EterPackManager.h"
+clientsource/UserInterface/PythonNetworkStreamPhaseGame.cpp:bool CPythonNetworkStream::SendPartyParameterPacket(BYTE byDistributeMode)
+clientsource/UserInterface/PythonNetworkStreamPhaseGame.cpp:		Tracenf("CPythonNetworkStream::SendPartyParameterPacket(%d) - PACKET SEND ERROR", byDistributeMode);
+clientsource/UserInterface/PythonNetworkStreamPhaseGame.cpp:	Tracef(" << SendPartyParameterPacket : %d\n", byDistributeMode);
+clientsource/UserInterface/PythonNetworkStreamPhaseGame.cpp:	TPacketGCPartyParameter kPartyParameterPacket;
+clientsource/UserInterface/PythonNetworkStreamPhaseGame.cpp:	if (!Recv(sizeof(kPartyParameterPacket), &kPartyParameterPacket))
+clientsource/UserInterface/PythonNetworkStreamPhaseGame.cpp:	PyCallClassMemberFunc(m_apoPhaseWnd[PHASE_WINDOW_GAME], "ChangePartyParameter", Py_BuildValue("(i)", kPartyParameterPacket.bDistributeMode));
+clientsource/UserInterface/PythonNetworkStreamPhaseGame.cpp:	Tracef(" >> RecvPartyParameter : %d\n", kPartyParameterPacket.bDistributeMode);
+clientsource/UserInterface/PythonNetworkStreamPhaseGame.cpp:	CFilename strRootPackFileName = CEterPackManager::Instance().GetRootPacketFileName();
+clientsource/UserInterface/PythonNetworkStreamPhaseGame.cpp:	kReportPacket.byPackMode = CEterPackManager::Instance().GetSearchMode();
+clientsource/UserInterface/PythonApplicationModule.cpp:#include "../EterPack/EterPackManager.h"
+clientsource/UserInterface/PythonApplicationModule.cpp:	bool isExist = CEterPackManager::Instance().isExist(szFileName);
+clientsource/UserInterface/PythonApplicationModule.cpp:		if (!CEterPackManager::Instance().Get(kFile, c_szFileName, &pvData))
+clientsource/UserInterface/PythonNetworkStream.h:	bool SendPartyParameterPacket(BYTE byDistributeMode);
+clientsource/UserInterface/UserInterface.cpp:#include "../eterPack/EterPackManager.h"
+clientsource/UserInterface/UserInterface.cpp:	CEterPackManager::Instance().SetRelativePathMode();
+clientsource/UserInterface/UserInterface.cpp:	CEterPackManager::Instance().SetCacheMode();
+clientsource/UserInterface/UserInterface.cpp:	CEterPackManager::Instance().SetSearchMode(bPackFirst);
+clientsource/UserInterface/UserInterface.cpp:		CEterPackManager::Instance().RegisterPack((c_pszFolder + std::string("/") + pack).c_str(), "*");
+clientsource/UserInterface/UserInterface.cpp:	CEterPackManager::Instance().RegisterRootPack((c_pszFolder + std::string("/") + std::string("root")).c_str());
+clientsource/UserInterface/UserInterface.cpp:	static CEterPackManager	EterPackManager;
+clientsource/UserInterface/PythonNetworkStreamPhaseLoading.cpp:#include "../eterPack/EterPackManager.h"
+clientsource/UserInterface/PythonNetworkStreamPhaseLoading.cpp:	if (!CEterPackManager::Instance().Get(file, c_szInsultListFileName, &pvData))
+clientsource/UserInterface/PythonNetworkStreamPhaseLoading.cpp:	if (!CEterPackManager::Instance().Get(file, c_szFileName, &pvData))
+clientsource/UserInterface/PythonEventManager.cpp:#include "../eterPack/EterPackManager.h"
+clientsource/UserInterface/PythonEventManager.cpp:	if (!CEterPackManager::Instance().Get(File, c_szFileName, &pMap))
+clientsource/UserInterface/UserInterface.vcxproj:    <ProjectReference Include="..\EterPack\EterPack.vcxproj">
+clientsource/UserInterface/AccountConnector.cpp:#include "../EterPack/EterPackManager.h"
+clientsource/UserInterface/AccountConnector.cpp:	CEterPackManager::instance().RegisterPack(kPacket.szPackName, "*", kPacket.abIV);
+clientsource/UserInterface/AccountConnector.cpp:	CEterPackManager::Instance().RetrieveHybridCryptPackKeys(kPacket.m_pStream);
+clientsource/UserInterface/AccountConnector.cpp:	CEterPackManager::Instance().RetrieveHybridCryptPackSDB(kPacket.m_pStream);
+clientsource/UserInterface/AccountConnector.cpp:		CEterPackManager::instance().DecryptPackIV(dwPanamaKey);
+clientsource/UserInterface/AccountConnector.cpp:		CEterPackManager::instance().DecryptPackIV(dwPanamaKey);
+clientsource/UserInterface/PythonNetworkStreamPhaseHandShake.cpp:#include "../eterpack/EterPackManager.h"
+clientsource/UserInterface/PythonNetworkStreamPhaseHandShake.cpp:	CEterPackManager::Instance().RetrieveHybridCryptPackKeys(kPacket.m_pStream);
+clientsource/UserInterface/PythonNetworkStreamPhaseHandShake.cpp:	CEterPackManager::Instance().RetrieveHybridCryptPackSDB(kPacket.m_pStream);
+clientsource/UserInterface/PythonBackground.cpp:#include "../eterPack/EterPackManager.h"
+clientsource/UserInterface/PythonBackground.cpp:	if (CEterPackManager::SEARCH_FILE_FIRST == CEterPackManager::Instance().GetSearchMode() &&
+clientsource/PRTerrainLib/Terrain.cpp:#include "../eterPack/EterPackManager.h"
+clientsource/PRTerrainLib/Terrain.cpp:	if (!CEterPackManager::Instance().Get(kMappedFile, c_szFileName, &lpcvFileData))
+clientsource/PRTerrainLib/Terrain.cpp:	if (!CEterPackManager::Instance().Get(kMappedFile, c_szFileName, &lpcvFileData))
+clientsource/PRTerrainLib/Terrain.cpp:	if (!CEterPackManager::Instance().Get(kMappedFile, c_szFileName, &lpcvFileData))
+clientsource/PRTerrainLib/Terrain.cpp:	if (!CEterPackManager::Instance().Get(kMappedFile, c_szFileName, &lpcvFileData))
+clientsource/GameLib/AreaTerrain.cpp:#include "../EterPack/EterPackManager.h"
+clientsource/GameLib/AreaTerrain.cpp:	if (!CEterPackManager::Instance().Get(file, c_pszFileName, &c_pvData))
+clientsource/GameLib/MapOutdoorLoad.cpp:#include "../EterPack/EterPackManager.h"
+clientsource/GameLib/MapOutdoorLoad.cpp:	CEterPackManager& rkPackMgr = CEterPackManager::Instance();
+clientsource/GameLib/MapOutdoorLoad.cpp:	if (!CEterPackManager::Instance().Get(File, c_szFileName, &pModelData))
+clientsource/GameLib/ItemManager.cpp:#include "../eterPack/EterPackManager.h"
+clientsource/GameLib/ItemManager.cpp:	if (!CEterPackManager::Instance().Get(File, c_szFileName, &pData))
+clientsource/GameLib/ItemManager.cpp:	if (!CEterPackManager::Instance().Get(kFile, c_szFileName, &pvData))
+clientsource/GameLib/ItemManager.cpp:	if (!CEterPackManager::Instance().Get(file, c_szFileName, &pvData))
+clientsource/GameLib/ItemManager.cpp:	if (!CEterPackManager::Instance().Get(kFile, c_szFileName, &pvData))
+clientsource/GameLib/PropertyManager.h:#include "../eterPack/EterPack.h"
+clientsource/GameLib/PropertyManager.h:	void			SetPack(CEterPack* pPack);
+clientsource/GameLib/PropertyManager.h:	CEterPack									m_pack;
+clientsource/GameLib/PropertyManager.cpp:#include "../eterPack/EterPackManager.h"
+clientsource/GameLib/PropertyManager.cpp:		typedef std::map<DWORD, TEterPackIndex*> TDataPositionMap;
+clientsource/GameLib/PropertyManager.cpp:			TEterPackIndex* pIndex = itor->second;
+clientsource/GameLib/PropertyManager.cpp:	if (!CEterPackManager::Instance().Get(file, c_pszFileName, &c_pvData))
+clientsource/GameLib/PropertyManager.cpp:	if (!CEterPackManager::Instance().Get(file, c_pszFileName, &c_pvData))
+clientsource/GameLib/MapManager.cpp:#include "../EterPack/EterPackManager.h"
+clientsource/GameLib/MapManager.cpp:	if (!CEterPackManager::Instance().Get(kFile, m_stAtlasInfoFileName.c_str(), &pData))
+clientsource/GameLib/MapManager.cpp:		if (!CEterPackManager::Instance().Get(kFile, "AtlasInfo.txt", &pData))
+clientsource/GameLib/RaceManager.cpp:#include "../EterPack/EterPackManager.h"
+clientsource/GameLib/RaceManager.cpp:	if (!CEterPackManager::Instance().Get(kMappedFile, motionListFileName, &pvData))
+clientsource/ScriptLib/PythonLauncher.cpp:#include "../eterPack/EterPackManager.h"
+clientsource/ScriptLib/PythonLauncher.cpp:		CEterPackManager::Instance().Get(file, c_szFileName, &pvData);
+clientsource/MilesLib/SoundData.cpp:#include "../EterPack/EterPackManager.h"
+clientsource/MilesLib/SoundData.cpp:	if (!CEterPackManager::Instance().Get(ms_SoundFile[iIndex], filename, &pMap))
+clientsource/EterPack/EterPack.h:#ifndef __INC_ETERPACKLIB_ETERPACK_H__
+clientsource/EterPack/EterPack.h:#define __INC_ETERPACKLIB_ETERPACK_H__
+clientsource/EterPack/EterPack.h:namespace eterpack
+clientsource/EterPack/EterPack.h:enum EEterPackTypes
+clientsource/EterPack/EterPack.h:typedef struct SEterPackIndex
+clientsource/EterPack/EterPack.h:} TEterPackIndex;
+clientsource/EterPack/EterPack.h:typedef boost::unordered_map<DWORD, TEterPackIndex*> TDataPositionMap;
+clientsource/EterPack/EterPack.h:typedef std::list<TEterPackIndex*> TFreeIndexList;
+clientsource/EterPack/EterPack.h:class CEterPack;
+clientsource/EterPack/EterPack.h:		CEterPack* pkPack;
+clientsource/EterPack/EterPack.h:		TEterPackIndex* pkInfo;
+clientsource/EterPack/EterPack.h:	void InsertItem(CEterPack* pkPack, TEterPackIndex* pkInfo);
+clientsource/EterPack/EterPack.h:	void UpdateItem(CEterPack* pkPack, TEterPackIndex* pkInfo);
+clientsource/EterPack/EterPack.h:class EterPackPolicy_CSHybridCrypt;
+clientsource/EterPack/EterPack.h:class CEterPack
+clientsource/EterPack/EterPack.h:	CEterPack();
+clientsource/EterPack/EterPack.h:	virtual ~CEterPack();
+clientsource/EterPack/EterPack.h:	bool				Get2(CMappedFile& mappedFile, const char* filename, TEterPackIndex* index, LPCVOID* data);
+clientsource/EterPack/EterPack.h:	EterPackPolicy_CSHybridCrypt* GetPackPolicy_HybridCrypt() const;
+clientsource/EterPack/EterPack.h:	TEterPackIndex* FindIndex(const char* filename);
+clientsource/EterPack/EterPack.h:	TEterPackIndex* NewIndex(CFileBase& file, const char* filename, long size);
+clientsource/EterPack/EterPack.h:	void				WriteIndex(CFileBase& file, TEterPackIndex* index);
+clientsource/EterPack/EterPack.h:	void				PushFreeIndex(TEterPackIndex* index);
+clientsource/EterPack/EterPack.h:	bool				ReadData(CFileBase& file, TEterPackIndex* index, LPVOID data, long maxsize);
+clientsource/EterPack/EterPack.h:	bool				WriteData(CFileBase& file, TEterPackIndex* index, LPCVOID data);
+clientsource/EterPack/EterPack.h:	bool				WriteNewData(CFileBase& file, TEterPackIndex* index, LPCVOID data);
+clientsource/EterPack/EterPack.h:	bool				Delete(TEterPackIndex* pIndex);
+clientsource/EterPack/EterPack.h:	TEterPackIndex* m_indexData;
+clientsource/EterPack/EterPack.h:	EterPackPolicy_CSHybridCrypt* m_pCSHybridCryptPolicy;
+clientsource/EterPack/EterPackManager.h:#include "EterPack.h"
+clientsource/EterPack/EterPackManager.h:class CEterPackManager : public CSingleton<CEterPackManager>
+clientsource/EterPack/EterPackManager.h:	typedef std::list<CEterPack*> TEterPackList;
+clientsource/EterPack/EterPackManager.h:	typedef boost::unordered_map<std::string, CEterPack*, stringhash> TEterPackMap;
+clientsource/EterPack/EterPackManager.h:	CEterPackManager();
+clientsource/EterPack/EterPackManager.h:	virtual ~CEterPackManager();
+clientsource/EterPack/EterPackManager.h:	bool RegisterPackWhenPackMaking(const char* c_szName, const char* c_szDirectory, CEterPack* pPack);
+clientsource/EterPack/EterPackManager.h:	CEterPack* FindPack(const char* c_szPathName);
+clientsource/EterPack/EterPackManager.h:	CEterPack				m_RootPack;
+clientsource/EterPack/EterPackManager.h:	TEterPackList			m_PackList;
+clientsource/EterPack/EterPackManager.h:	TEterPackMap			m_PackMap;
+clientsource/EterPack/EterPackManager.h:	TEterPackMap			m_DirPackMap;
+clientsource/EterPack/EterPackPolicy_CSHybridCrypt.cpp:#include "EterPackPolicy_CSHybridCrypt.h"
+clientsource/EterPack/EterPackPolicy_CSHybridCrypt.cpp:EterPackPolicy_CSHybridCrypt::~EterPackPolicy_CSHybridCrypt()
+clientsource/EterPack/EterPackPolicy_CSHybridCrypt.cpp:bool EterPackPolicy_CSHybridCrypt::IsContainingCryptKey() const
+clientsource/EterPack/EterPackPolicy_CSHybridCrypt.cpp:bool EterPackPolicy_CSHybridCrypt::GenerateCryptKey(std::string& rfileName)
+clientsource/EterPack/EterPackPolicy_CSHybridCrypt.cpp:bool EterPackPolicy_CSHybridCrypt::GetPerFileCryptKey(std::string& rfileName, eHybridCipherAlgorithm& eAlgorithm, TEncryptKey& key, TEncryptIV& iv)
+clientsource/EterPack/EterPackPolicy_CSHybridCrypt.cpp:bool EterPackPolicy_CSHybridCrypt::EncryptMemory(std::string& rfileName, IN const BYTE* pSrcData, IN int iSrcLen, OUT CLZObject& zObj)
+clientsource/EterPack/EterPackPolicy_CSHybridCrypt.cpp:bool EterPackPolicy_CSHybridCrypt::DecryptMemory(std::string& rfilename, IN const BYTE* pEncryptedData, IN int iEncryptedLen, OUT CLZObject& zObj)
+clientsource/EterPack/EterPackPolicy_CSHybridCrypt.cpp:void EterPackPolicy_CSHybridCrypt::WriteCryptKeyToFile(CFileBase& rFile)
+clientsource/EterPack/EterPackPolicy_CSHybridCrypt.cpp:int EterPackPolicy_CSHybridCrypt::ReadCryptKeyInfoFromStream(IN const BYTE* pStream)
+clientsource/EterPack/EterPackPolicy_CSHybridCrypt.cpp:bool EterPackPolicy_CSHybridCrypt::GenerateSupplementaryDataBlock(std::string& rfilename, const std::string& strMapName, IN const BYTE* pSrcData, IN int iSrcLen, OUT LPBYTE& pDestData, OUT int& iDestLen)
+clientsource/EterPack/EterPackPolicy_CSHybridCrypt.cpp:bool EterPackPolicy_CSHybridCrypt::GetSupplementaryDataBlock(std::string& rfilename, OUT LPBYTE& pSDB, OUT int& iSDBSize)
+clientsource/EterPack/EterPackPolicy_CSHybridCrypt.cpp:bool EterPackPolicy_CSHybridCrypt::IsContainingSDBFile() const
+clientsource/EterPack/EterPackPolicy_CSHybridCrypt.cpp:void EterPackPolicy_CSHybridCrypt::WriteSupplementaryDataBlockToFile(CFileBase& rFile)
+clientsource/EterPack/EterPackPolicy_CSHybridCrypt.cpp:int EterPackPolicy_CSHybridCrypt::ReadSupplementatyDataBlockFromStream(IN const BYTE* pStream)
+clientsource/EterPack/md5.h:#ifndef __INC_ETERPACKLIB_MD5_H__
+clientsource/EterPack/md5.h:#define __INC_ETERPACKLIB_MD5_H__
+clientsource/EterPack/EterPackCursor.cpp:#include "EterPackCursor.h"
+clientsource/EterPack/EterPackCursor.cpp:CEterPackCursor::CEterPackCursor(CEterPack* pack) : m_pPack(pack), m_pData(NULL), m_ReadPoint(0)
+clientsource/EterPack/EterPackCursor.cpp:CEterPackCursor::~CEterPackCursor()
+clientsource/EterPack/EterPackCursor.cpp:bool CEterPackCursor::Open(const char* filename)
+clientsource/EterPack/EterPackCursor.cpp:void CEterPackCursor::Close()
+clientsource/EterPack/EterPackCursor.cpp:void CEterPackCursor::Seek(long offset)
+clientsource/EterPack/EterPackCursor.cpp:bool CEterPackCursor::Read(LPVOID data, long size)
+clientsource/EterPack/EterPackCursor.cpp:long CEterPackCursor::Size()
+clientsource/EterPack/Inline.h:#ifndef __INC_ETERPACK_INLINE_H__
+clientsource/EterPack/Inline.h:#define __INC_ETERPACK_INLINE_H__
+clientsource/EterPack/EterPackPolicy_CSHybridCrypt.h:#ifndef __INC_ETERPACKLIB_ETERPACKPOLICY_CSHYBRIDCRYPT_H__
+clientsource/EterPack/EterPackPolicy_CSHybridCrypt.h:#define __INC_ETERPACKLIB_ETERPACKPOLICY_CSHYBRIDCRYPT_H__
+clientsource/EterPack/EterPackPolicy_CSHybridCrypt.h:class EterPackPolicy_CSHybridCrypt
+clientsource/EterPack/EterPackPolicy_CSHybridCrypt.h:	~EterPackPolicy_CSHybridCrypt();
+clientsource/EterPack/EterPackPolicy_CSHybridCrypt.h:#endif // __INC_ETERPACKLIB_ETERPACKPOLICY_CSHYBRIDCRYPT_H__
+clientsource/EterPack/EterPackManager.cpp:#include "EterPackManager.h"
+clientsource/EterPack/EterPackManager.cpp:#include "EterPackPolicy_CSHybridCrypt.h"
+clientsource/EterPack/EterPackManager.cpp:CEterPack* CEterPackManager::FindPack(const char* c_szPathName)
+clientsource/EterPack/EterPackManager.cpp:		for (TEterPackMap::iterator itor = m_DirPackMap.begin(); itor != m_DirPackMap.end(); ++itor)
+clientsource/EterPack/EterPackManager.cpp:			CEterPack* pEterPack = itor->second;
+clientsource/EterPack/EterPackManager.cpp:				return pEterPack;
+clientsource/EterPack/EterPackManager.cpp:void CEterPackManager::SetCacheMode()
+clientsource/EterPack/EterPackManager.cpp:void CEterPackManager::SetRelativePathMode()
+clientsource/EterPack/EterPackManager.cpp:int CEterPackManager::ConvertFileName(const char* c_szFileName, std::string& rstrFileName)
+clientsource/EterPack/EterPackManager.cpp:bool CEterPackManager::CompareName(const char* c_szDirectoryName, DWORD /*dwLength*/, const char* c_szFileName)
+clientsource/EterPack/EterPackManager.cpp:void CEterPackManager::LoadStaticCache(const char* c_szFileName)
+clientsource/EterPack/EterPackManager.cpp:CEterPackManager::SCache* CEterPackManager::__FindCache(DWORD dwFileNameHash)
+clientsource/EterPack/EterPackManager.cpp:void	CEterPackManager::__ClearCacheMap()
+clientsource/EterPack/EterPackManager.cpp:bool CEterPackManager::Get(CMappedFile& rMappedFile, const char* c_szFileName, LPCVOID* pData)
+clientsource/EterPack/EterPackManager.cpp:bool CEterPackManager::GetFromPack(CMappedFile& rMappedFile, const char* c_szFileName, LPCVOID* pData)
+clientsource/EterPack/EterPackManager.cpp:void CEterPackManager::ArrangeMemoryMappedPack()
+clientsource/EterPack/EterPackManager.cpp:	//	CEterPack* pkPack = rFileItem.pkPack;
+clientsource/EterPack/EterPackManager.cpp:bool CEterPackManager::GetFromFile(CMappedFile& rMappedFile, const char* c_szFileName, LPCVOID* pData)
+clientsource/EterPack/EterPackManager.cpp:bool CEterPackManager::isExistInPack(const char* c_szFileName)
+clientsource/EterPack/EterPackManager.cpp:bool CEterPackManager::isExist(const char* c_szFileName)
+clientsource/EterPack/EterPackManager.cpp:void CEterPackManager::RegisterRootPack(const char* c_szName)
+clientsource/EterPack/EterPackManager.cpp:const char* CEterPackManager::GetRootPackFileName()
+clientsource/EterPack/EterPackManager.cpp:bool CEterPackManager::DecryptPackIV(DWORD dwPanamaKey)
+clientsource/EterPack/EterPackManager.cpp:	TEterPackMap::iterator itor = m_PackMap.begin();
+clientsource/EterPack/EterPackManager.cpp:bool CEterPackManager::RegisterPackWhenPackMaking(const char* c_szName, const char* c_szDirectory, CEterPack* pPack)
+clientsource/EterPack/EterPackManager.cpp:	m_PackMap.insert(TEterPackMap::value_type(c_szName, pPack));
+clientsource/EterPack/EterPackManager.cpp:	m_DirPackMap.insert(TEterPackMap::value_type(c_szDirectory, pPack));
+clientsource/EterPack/EterPackManager.cpp:bool CEterPackManager::RegisterPack(const char* c_szName, const char* c_szDirectory, const BYTE* c_pbIV)
+clientsource/EterPack/EterPackManager.cpp:	CEterPack* pEterPack = NULL;
+clientsource/EterPack/EterPackManager.cpp:		TEterPackMap::iterator itor = m_PackMap.find(c_szName);
+clientsource/EterPack/EterPackManager.cpp:			pEterPack = new CEterPack;
+clientsource/EterPack/EterPackManager.cpp:			if (pEterPack->Create(m_FileDict, c_szName, c_szDirectory, bReadOnly, c_pbIV))
+clientsource/EterPack/EterPackManager.cpp:				m_PackMap.insert(TEterPackMap::value_type(c_szName, pEterPack));
+clientsource/EterPack/EterPackManager.cpp:				Tracef("The eterpack doesn't exist [%s]\n", c_szName);
+clientsource/EterPack/EterPackManager.cpp:				delete pEterPack;
+clientsource/EterPack/EterPackManager.cpp:				pEterPack = NULL;
+clientsource/EterPack/EterPackManager.cpp:			pEterPack = itor->second;
+clientsource/EterPack/EterPackManager.cpp:		TEterPackMap::iterator itor = m_DirPackMap.find(c_szDirectory);
+clientsource/EterPack/EterPackManager.cpp:			m_PackList.push_front(pEterPack);
+clientsource/EterPack/EterPackManager.cpp:			m_DirPackMap.insert(TEterPackMap::value_type(c_szDirectory, pEterPack));
+clientsource/EterPack/EterPackManager.cpp:void CEterPackManager::SetSearchMode(bool bPackFirst)
+clientsource/EterPack/EterPackManager.cpp:int CEterPackManager::GetSearchMode()
+clientsource/EterPack/EterPackManager.cpp:CEterPackManager::CEterPackManager() : m_bTryRelativePath(false), m_iSearchMode(SEARCH_FILE_FIRST), m_isCacheMode(false)
+clientsource/EterPack/EterPackManager.cpp:CEterPackManager::~CEterPackManager()
+clientsource/EterPack/EterPackManager.cpp:	TEterPackMap::iterator i = m_PackMap.begin();
+clientsource/EterPack/EterPackManager.cpp:	TEterPackMap::iterator e = m_PackMap.end();
+clientsource/EterPack/EterPackManager.cpp:void CEterPackManager::RetrieveHybridCryptPackKeys(const BYTE* pStream)
+clientsource/EterPack/EterPackManager.cpp:		TEterPackMap::const_iterator cit;
+clientsource/EterPack/EterPackManager.cpp:				EterPackPolicy_CSHybridCrypt* pCryptPolicy = cit->second->GetPackPolicy_HybridCrypt();
+clientsource/EterPack/EterPackManager.cpp:					TraceError("CEterPackManager::RetrieveHybridCryptPackKeys	cryptokey length of file(%s) is not matched. received(%d) != haved(%d)", noPathName.c_str(), iRecvedCryptKeySize, iHavedCryptKeySize);
+clientsource/EterPack/EterPackManager.cpp:void CEterPackManager::RetrieveHybridCryptPackSDB(const BYTE* pStream)
+clientsource/EterPack/EterPackManager.cpp:		TEterPackMap::const_iterator cit;
+clientsource/EterPack/EterPackManager.cpp:				EterPackPolicy_CSHybridCrypt* pCryptPolicy = cit->second->GetPackPolicy_HybridCrypt();
+clientsource/EterPack/EterPackManager.cpp:void CEterPackManager::WriteHybridCryptPackInfo(const char* pFileName)
+clientsource/EterPack/EterPackManager.cpp:	TEterPackMap::const_iterator cit;
+clientsource/EterPack/EterPackManager.cpp:		EterPackPolicy_CSHybridCrypt* pPolicy = cit->second->GetPackPolicy_HybridCrypt();
+clientsource/EterPack/EterPackManager.cpp:		CMakePackLog::GetSingleton().Writef("CEterPackManager::WriteHybridCryptPackInfo PackName : %s, Hash : %x", noPathName.c_str(), dwPackNamehash);
+clientsource/EterPack/EterPackManager.cpp:		EterPackPolicy_CSHybridCrypt* pPolicy = cit->second->GetPackPolicy_HybridCrypt();
+clientsource/EterPack/EterPack.cpp:#include "EterPack.h"
+clientsource/EterPack/EterPack.cpp:#include "EterPackPolicy_CSHybridCrypt.h"
+clientsource/EterPack/EterPack.cpp:FILE* CEterPack::ms_PackLogFile = NULL;
+clientsource/EterPack/EterPack.cpp:CEterPack::CEterPack() : m_indexCount(0), m_indexData(NULL), m_FragmentSize(0), m_bEncrypted(false), m_bReadOnly(false), m_bDecrypedIV(false)
+clientsource/EterPack/EterPack.cpp:	m_pCSHybridCryptPolicy = new EterPackPolicy_CSHybridCrypt;
+clientsource/EterPack/EterPack.cpp:CEterPack::~CEterPack()
+clientsource/EterPack/EterPack.cpp:void CEterPack::Destroy()
+clientsource/EterPack/EterPack.cpp:const std::string& CEterPack::GetPathName()
+clientsource/EterPack/EterPack.cpp:bool CEterPack::Create(CEterFileDict& rkFileDict, const char* dbname, const char* pathName, bool bReadOnly, const BYTE* iv)
+clientsource/EterPack/EterPack.cpp:bool CEterPack::DecryptIV(DWORD dwPanamaKey)
+clientsource/EterPack/EterPack.cpp:bool CEterPack::DecryptIndexFile()
+clientsource/EterPack/EterPack.cpp:	file.Write(&eterpack::c_IndexCC, sizeof(DWORD));
+clientsource/EterPack/EterPack.cpp:	file.Write(&eterpack::c_Version, sizeof(DWORD));
+clientsource/EterPack/EterPack.cpp:	file.Write(m_indexData, sizeof(TEterPackIndex) * m_indexCount);
+clientsource/EterPack/EterPack.cpp:static DWORD s_adwEterPackKey[] =
+clientsource/EterPack/EterPack.cpp:static DWORD s_adwEterPackSecurityKey[] =
+clientsource/EterPack/EterPack.cpp:bool CEterPack::EncryptIndexFile()
+clientsource/EterPack/EterPack.cpp:	if (!CLZO::Instance().CompressEncryptedMemory(zObj, pbData, file.Size(), s_adwEterPackKey))
+clientsource/EterPack/EterPack.cpp:bool CEterPack::__BuildIndex(CEterFileDict& rkFileDict, bool bOverwrite)
+clientsource/EterPack/EterPack.cpp:	if (file.Size() < eterpack::c_HeaderSize)
+clientsource/EterPack/EterPack.cpp:	if (fourcc == eterpack::c_IndexCC)
+clientsource/EterPack/EterPack.cpp:		if (!CLZO::Instance().Decompress(zObj, (const BYTE*)pvData, s_adwEterPackKey))
+clientsource/EterPack/EterPack.cpp:		if (zObj.GetSize() < eterpack::c_HeaderSize)
+clientsource/EterPack/EterPack.cpp:	if (ver != eterpack::c_Version)
+clientsource/EterPack/EterPack.cpp:	if (uiFileSize < eterpack::c_HeaderSize + sizeof(TEterPackIndex) * m_indexCount)
+clientsource/EterPack/EterPack.cpp:	m_indexData = new TEterPackIndex[m_indexCount];
+clientsource/EterPack/EterPack.cpp:	memcpy(m_indexData, pbData, sizeof(TEterPackIndex) * m_indexCount);
+clientsource/EterPack/EterPack.cpp:	TEterPackIndex* index = m_indexData;
+clientsource/EterPack/EterPack.cpp://void CEterPack::UpdateLastAccessTime()
+clientsource/EterPack/EterPack.cpp://void CEterPack::ClearDataMemoryMap()
+clientsource/EterPack/EterPack.cpp:bool CEterPack::Get(CMappedFile& out_file, const char* filename, LPCVOID* data)
+clientsource/EterPack/EterPack.cpp:	TEterPackIndex* index = FindIndex(filename);
+clientsource/EterPack/EterPack.cpp:		if (!CLZO::Instance().Decompress(*zObj, static_cast<const BYTE*>(*data), s_adwEterPackSecurityKey))
+clientsource/EterPack/EterPack.cpp:bool CEterPack::Get2(CMappedFile& out_file, const char* filename, TEterPackIndex* index, LPCVOID* data)
+clientsource/EterPack/EterPack.cpp:		if (!CLZO::Instance().Decompress(*zObj, static_cast<const BYTE*>(*data), s_adwEterPackSecurityKey))
+clientsource/EterPack/EterPack.cpp:bool CEterPack::Delete(TEterPackIndex* pIndex)
+clientsource/EterPack/EterPack.cpp:bool CEterPack::Delete(const char* filename)
+clientsource/EterPack/EterPack.cpp:	TEterPackIndex* pIndex = FindIndex(filename);
+clientsource/EterPack/EterPack.cpp:bool CEterPack::Extract()
+clientsource/EterPack/EterPack.cpp:		TEterPackIndex* index = i->second;
+clientsource/EterPack/EterPack.cpp:			if (!CLZO::Instance().Decompress(zObj, (const BYTE*)data + index->data_position, s_adwEterPackSecurityKey))
+clientsource/EterPack/EterPack.cpp:bool CEterPack::GetNames(std::vector<std::string>* retNames)
+clientsource/EterPack/EterPack.cpp:		TEterPackIndex* index = i->second;
+clientsource/EterPack/EterPack.cpp:bool CEterPack::Put(const char* filename, const char* sourceFilename, BYTE packType, const std::string& strRelateMapName)
+clientsource/EterPack/EterPack.cpp:void CEterPack::GenerateMD5Hash(BYTE* pData, int nLength, IN OUT MD5_CTX& mdContext)
+clientsource/EterPack/EterPack.cpp:bool CEterPack::Put(const char* filename, LPCVOID data, long len, BYTE packType)
+clientsource/EterPack/EterPack.cpp:		TraceError("EterPack::Put : Cannot put to encrypted pack (filename: %s, DB: %s)", filename, m_dbName);
+clientsource/EterPack/EterPack.cpp:	TEterPackIndex* pIndex;
+clientsource/EterPack/EterPack.cpp:			if (!CLZO::Instance().CompressEncryptedMemory(zObj, data, len, s_adwEterPackSecurityKey))
+clientsource/EterPack/EterPack.cpp:long CEterPack::GetFragmentSize()
+clientsource/EterPack/EterPack.cpp:bool CEterPack::CreateIndexFile()
+clientsource/EterPack/EterPack.cpp:	fwrite(&eterpack::c_IndexCC, sizeof(DWORD), 1, fp);
+clientsource/EterPack/EterPack.cpp:	fwrite(&eterpack::c_Version, sizeof(DWORD), 1, fp);
+clientsource/EterPack/EterPack.cpp:void CEterPack::WriteIndex(CFileBase& file, TEterPackIndex* index)
+clientsource/EterPack/EterPack.cpp:	file.Seek(eterpack::c_HeaderSize + (index->id * sizeof(TEterPackIndex)));
+clientsource/EterPack/EterPack.cpp:	if (!file.Write(index, sizeof(TEterPackIndex)))
+clientsource/EterPack/EterPack.cpp:int CEterPack::GetFreeBlockIndex(long size)
+clientsource/EterPack/EterPack.cpp:void CEterPack::PushFreeIndex(TEterPackIndex* index)
+clientsource/EterPack/EterPack.cpp:long CEterPack::GetNewIndexPosition(CFileBase& file)
+clientsource/EterPack/EterPack.cpp:	long pos = (file.Size() - eterpack::c_HeaderSize) / sizeof(TEterPackIndex);
+clientsource/EterPack/EterPack.cpp:TEterPackIndex* CEterPack::NewIndex(CFileBase& file, const char* filename, long size)
+clientsource/EterPack/EterPack.cpp:	TEterPackIndex* index = NULL;
+clientsource/EterPack/EterPack.cpp:		index = new TEterPackIndex;
+clientsource/EterPack/EterPack.cpp:TEterPackIndex* CEterPack::FindIndex(const char* filename)
+clientsource/EterPack/EterPack.cpp:bool CEterPack::IsExist(const char* filename)
+clientsource/EterPack/EterPack.cpp:bool CEterPack::CreateDataFile()
+clientsource/EterPack/EterPack.cpp:long CEterPack::GetNewDataPosition(CFileBase& file)
+clientsource/EterPack/EterPack.cpp:bool CEterPack::ReadData(CFileBase& file, TEterPackIndex* index, LPVOID data, long maxsize)
+clientsource/EterPack/EterPack.cpp:bool CEterPack::WriteData(CFileBase& file, TEterPackIndex* index, LPCVOID data)
+clientsource/EterPack/EterPack.cpp:bool CEterPack::WriteNewData(CFileBase& file, TEterPackIndex* index, LPCVOID data)
+clientsource/EterPack/EterPack.cpp:TDataPositionMap& CEterPack::GetIndexMap()
+clientsource/EterPack/EterPack.cpp:DWORD CEterPack::DeleteUnreferencedData()
+clientsource/EterPack/EterPack.cpp:		TEterPackIndex* pIndex = (i++)->second;
+clientsource/EterPack/EterPack.cpp:const char* CEterPack::GetDBName()
+clientsource/EterPack/EterPack.cpp:void CEterPack::__CreateFileNameKey_Panama(const char* filename, BYTE* key, unsigned int keySize)
+clientsource/EterPack/EterPack.cpp:bool CEterPack::__Encrypt_Panama(const char* filename, const BYTE* data, SIZE_T dataSize, CLZObject& zObj)
+clientsource/EterPack/EterPack.cpp:bool CEterPack::__Decrypt_Panama(const char* filename, const BYTE* data, SIZE_T dataSize, CLZObject& zObj)
+clientsource/EterPack/EterPack.cpp:EterPackPolicy_CSHybridCrypt* CEterPack::GetPackPolicy_HybridCrypt() const
+clientsource/EterPack/EterPack.cpp:void CEterFileDict::InsertItem(CEterPack* pkPack, TEterPackIndex* pkInfo)
+clientsource/EterPack/EterPack.cpp:void CEterFileDict::UpdateItem(CEterPack* pkPack, TEterPackIndex* pkInfo)
+clientsource/EterPack/EterPackCursor.h:#ifndef __INC_ETERPACKCURSOR_H__
+clientsource/EterPack/EterPackCursor.h:#define __INC_ETERPACKCURSOR_H__
+clientsource/EterPack/EterPackCursor.h:#include "EterPack.h"
+clientsource/EterPack/EterPackCursor.h:class CEterPackCursor
+clientsource/EterPack/EterPackCursor.h:	CEterPackCursor(CEterPack* pack);
+clientsource/EterPack/EterPackCursor.h:	~CEterPackCursor();
+clientsource/EterPack/EterPackCursor.h:	CEterPack* m_pPack;
+clientsource/EterPack/EterPack.vcxproj:    <ProjectName>EterPack</ProjectName>
+clientsource/EterPack/EterPack.vcxproj:    <RootNamespace>EterPack</RootNamespace>
+clientsource/EterPack/EterPack.vcxproj:    <ClCompile Include="EterPack.cpp">
+clientsource/EterPack/EterPack.vcxproj:    <ClCompile Include="EterPackCursor.cpp">
+clientsource/EterPack/EterPack.vcxproj:    <ClCompile Include="EterPackManager.cpp">
+clientsource/EterPack/EterPack.vcxproj:    <ClCompile Include="EterPackPolicy_CSHybridCrypt.cpp" />
+clientsource/EterPack/EterPack.vcxproj:    <ClInclude Include="EterPack.h" />
+clientsource/EterPack/EterPack.vcxproj:    <ClInclude Include="EterPackCursor.h" />
+clientsource/EterPack/EterPack.vcxproj:    <ClInclude Include="EterPackManager.h" />
+clientsource/EterPack/EterPack.vcxproj:    <ClInclude Include="EterPackPolicy_CSHybridCrypt.h" />
+clientsource/EffectLib/EffectMesh.cpp:#include "../eterpack/EterPackManager.h"
+clientsource/EffectLib/EffectMesh.cpp:			if (CEterPackManager::Instance().Get(File, pMeshData->szDiffuseMapFileName, &pMotionData))
+clientsource/EffectLib/EffectMesh.cpp:			if (CEterPackManager::Instance().Get(File, pMeshData->szDiffuseMapFileName, &pMotionData))
+clientsource/CMakeLists.txt:    ./EterPack

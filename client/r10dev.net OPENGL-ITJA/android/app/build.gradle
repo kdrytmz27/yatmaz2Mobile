@@ -1,0 +1,153 @@
+apply plugin: 'com.android.application'
+
+def m2profileName = project.hasProperty('m2profile') ? project.property('m2profile') : 'emulator'
+def m2profile = new Properties()
+file("../profiles/${m2profileName}.properties").withInputStream { m2profile.load(it) }
+def m2 = { String key, String fallback = '' -> m2profile.getProperty("m2.${key}", fallback).trim() }
+def m2abis = project.hasProperty('m2abi') ? project.property('m2abi') : m2('abi', 'arm64-v8a,x86_64')
+def m2embedded = m2('serverMode', 'remote') == 'embedded'
+def m2dataBundled = m2('dataBundled', 'false').toBoolean()
+def m2dataAssets = project.hasProperty('m2dataAssets') ? project.property('m2dataAssets') : null
+if (m2dataBundled && m2dataAssets == null)
+    throw new GradleException("profile ${m2profileName} bundles client data: pass -Pm2dataAssets=<dir containing m2data.zip> (tools/make_bundle.sh does this)")
+def m2ccacheBin = ['/usr/bin/ccache', '/usr/local/bin/ccache'].find { new File(it).canExecute() }
+def m2ccache = m2ccacheBin ? ["-DCMAKE_C_COMPILER_LAUNCHER=${m2ccacheBin}", "-DCMAKE_CXX_COMPILER_LAUNCHER=${m2ccacheBin}"] : []
+def m2iconDir = file('build/generated-icon')
+def m2icon = new File(m2iconDir, 'mipmap-mdpi/ic_launcher.png').isFile() ? '@mipmap/ic_launcher' : '@android:drawable/sym_def_app_icon'
+def m2buildNumber = (project.hasProperty('m2build') ? project.property('m2build') : '1') as int
+
+android {
+    sourceSets.main.res.srcDirs += m2iconDir
+    namespace "com.metin2.client"
+    compileSdkVersion 33
+    buildToolsVersion "33.0.1"
+    ndkVersion "25.2.9519653"
+
+    defaultConfig {
+        applicationId "com.metin2.client"
+        applicationIdSuffix m2('applicationIdSuffix')
+        manifestPlaceholders = [m2appLabel: m2('appLabel', 'Metin2 Mobile'), m2appIcon: m2icon]
+        minSdkVersion 21
+        targetSdkVersion 33
+        versionCode m2buildNumber
+        versionName "${m2('versionName', 'dev')}-${m2buildNumber}"
+        buildConfigField "String", "M2_PROFILE", "\"${m2profileName}\""
+        buildConfigField "String", "M2_SERVER_MODE", "\"${m2('serverMode', 'remote')}\""
+        buildConfigField "String", "M2_SERVER_HOST", "\"${m2('serverHost')}\""
+        buildConfigField "int", "M2_AUTH_PORT", m2('authPort', '11000')
+        buildConfigField "int", "M2_CHANNEL_PORT", m2('channelPort', '11011')
+        buildConfigField "int", "M2_GAME_PORT_OFFSET", m2('gamePortOffset', '0')
+        buildConfigField "String", "M2_SERVER_LIST_URL", "\"${m2('serverListUrl', 'https://raw.githubusercontent.com/cemreefe/metin2-android/main/r10dev.net%20OPENGL-ITJA/android/servers/servers.json')}\""
+        buildConfigField "String", "M2_DATA_URL", "\"${m2('dataUrl')}\""
+        buildConfigField "int", "M2_DATA_VERSION", m2('dataVersion', '1')
+        buildConfigField "boolean", "M2_DATA_BUNDLED", "${m2dataBundled}"
+        buildConfigField "String", "M2_DEV_URL", "\"${m2('devUrl')}\""
+        buildConfigField "String", "M2_UPDATE_CHANNEL", "\"${m2('updateChannel', m2profileName)}\""
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        
+        externalNativeBuild {
+            cmake {
+                cppFlags "-std=c++11 -frtti -fexceptions -fsigned-char -Wno-invalid-source-encoding"
+                cFlags "-fsigned-char"
+                arguments(*(["-DANDROID_STL=c++_shared", "-DANDROID_TOOLCHAIN=clang"] + m2ccache))
+                abiFilters(*m2abis.split(','))
+            }
+        }
+    }
+
+    buildFeatures {
+        buildConfig true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            debuggable true
+            jniDebuggable true
+        }
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = m2embedded ? ['src/main/jniLibs', "${buildDir}/m2server/jniLibs"] : ['src/main/jniLibs']
+            assets.srcDirs = m2dataBundled ? ['src/main/assets', '../servers', m2dataAssets] : ['src/main/assets', '../servers']
+        }
+    }
+
+    externalNativeBuild {
+        cmake {
+            path file("../../clientsource/CMakeLists.txt")
+        }
+    }
+
+    aaptOptions {
+        noCompress 'zip'
+    }
+
+    packagingOptions {
+        // Embedded server executables (lib*.so) must be extracted to nativeLibraryDir to be exec'd.
+        jniLibs.useLegacyPackaging = true
+        pickFirst 'lib/armeabi-v7a/libmetin2_mobile.so'
+        pickFirst 'lib/arm64-v8a/libmetin2_mobile.so'
+        pickFirst 'lib/x86/libmetin2_mobile.so'
+        pickFirst 'lib/x86_64/libmetin2_mobile.so'
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.9.0'
+}
+
+// Embedded server: cross-compile m2dev-server-src (pinned commit) with the
+// SQLite-backed MySQL shim in ../server into PIE executables per ABI.
+def m2ServerCommit = '66068c1'
+def m2ServerDir = file('../../server')
+def m2ServerSrc = file(project.findProperty('m2serverSrc') ?: System.getenv('M2_SERVER_SRC') ?: "${m2ServerDir}/.src/m2dev-server-src")
+
+task fetchEmbeddedServerSource {
+    onlyIf { !project.hasProperty('m2serverSrc') && System.getenv('M2_SERVER_SRC') == null }
+    doLast {
+        if (!file("${m2ServerSrc}/src/CMakeLists.txt").exists())
+            exec { commandLine 'git', 'clone', '--quiet', 'https://github.com/d1str4ught/m2dev-server-src.git', m2ServerSrc.path }
+        exec { commandLine 'git', '-C', m2ServerSrc.path, 'checkout', '--quiet', m2ServerCommit }
+    }
+}
+
+task buildEmbeddedServer {
+    dependsOn fetchEmbeddedServerSource
+    doLast {
+        def sdk = android.sdkDirectory
+        def ndk = android.ndkDirectory
+        def cmakeBin = new File(sdk, 'cmake/3.22.1/bin')
+        def windowsHost = System.getProperty('os.name').toLowerCase().contains('windows')
+        def hostTag = windowsHost ? 'windows-x86_64' : (System.getProperty('os.name').toLowerCase().contains('mac') ? 'darwin-x86_64' : 'linux-x86_64')
+        def suffix = windowsHost ? '.exe' : ''
+        def strip = new File(ndk, "toolchains/llvm/prebuilt/${hostTag}/bin/llvm-strip${suffix}")
+        m2abis.split(',').each { abi ->
+            def out = file("${buildDir}/m2server/${abi}")
+            exec {
+                commandLine "${cmakeBin}/cmake${suffix}", '-S', m2ServerDir.path, '-B', out.path, '-G', 'Ninja',
+                        "-DCMAKE_MAKE_PROGRAM=${cmakeBin}/ninja${suffix}",
+                        "-DCMAKE_TOOLCHAIN_FILE=${ndk}/build/cmake/android.toolchain.cmake",
+                        "-DANDROID_ABI=${abi}", '-DANDROID_PLATFORM=21', '-DANDROID_STL=c++_static',
+                        '-DCMAKE_BUILD_TYPE=Release', "-DM2_SERVER_SRC=${m2ServerSrc}"
+            }
+            exec { commandLine "${cmakeBin}/cmake${suffix}", '--build', out.path, '--target', 'db', 'game', 'qc', '--parallel', '4' }
+            def dst = file("${buildDir}/m2server/jniLibs/${abi}")
+            dst.mkdirs()
+            ['libm2db.so', 'libm2game.so'].each { lib ->
+                exec { commandLine strip.path, '-o', new File(dst, lib).path, new File(out, "bin/${lib}").path }
+            }
+        }
+    }
+}
+
+if (m2embedded) {
+    preBuild.dependsOn buildEmbeddedServer
+}

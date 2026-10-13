@@ -1,0 +1,21 @@
+#pragma once
+
+#define WIN32_LEAN_AND_MEAN		// Exclude rarely-used stuff from Windows headers
+//#define SPHERELIB_STRICT
+//#include <crtdbg.h>
+
+#ifndef ENABLE_OPENGL
+#include <d3d8.h>
+#include <d3dx8.h>
+#else
+#include "../EterLib/GrpOpenGL.h"
+#endif
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <assert.h>
+#include <math.h>
+
+#include "../EterBase/StdAfx.h"
+#include "../UserInterface/Locale_inc.h"

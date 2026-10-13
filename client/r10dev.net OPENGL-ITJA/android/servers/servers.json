@@ -1,0 +1,7 @@
+{
+  "_comment": "Server list shown on the login screen, in order. Edit this file to add a server; installed apps pick up the copy on main at their next launch. Single Player is the server embedded in the app (only listed in builds that ship it).",
+  "version": 3,
+  "servers": [
+    { "name": "Single Player", "embedded": true }
+  ]
+}
