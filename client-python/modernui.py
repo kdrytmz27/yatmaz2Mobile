@@ -102,6 +102,25 @@ def Glyph(kind, x, y, size, color=TEXT):
 		Line(cx-d,cy-d,0,d*2,color); Line(cx+d,cy-d,0,d*2,color)
 		Line(cx-d/2,cy-d-3,d,0,color)
 
+def InventoryPanel(x,y,w,h):
+ Bar(x+3,y+4,w,h,0x80000000)
+ Bar(x,y,w,h,0xf51c1b1b)
+ # Recessed dark interior, layered aged metal border and corner brackets.
+ Bar(x+5,y+29,w-10,h-34,0xff171718)
+ for inset,color in ((0,0xff141213),(1,0xff9b8b72),(2,0xff51483d),(4,0xff342e29)):
+  Line(x+inset,y+inset,w-2*inset,0,color); Line(x+inset,y+h-inset,w-2*inset,0,color)
+  Line(x+inset,y+inset,0,h-2*inset,color); Line(x+w-inset,y+inset,0,h-2*inset,color)
+ for xx,yy,dx,dy in ((x+3,y+3,1,1),(x+w-3,y+3,-1,1),(x+3,y+h-3,1,-1),(x+w-3,y+h-3,-1,-1)):
+  Line(xx,yy,10*dx,0,0xffcfb58b); Line(xx,yy,0,10*dy,0xffcfb58b)
+  Line(xx+4*dx,yy+4*dy,5*dx,0,0xff806a4e); Line(xx+4*dx,yy+4*dy,0,5*dy,0xff806a4e)
+
+def InventoryCell(x,y,w,h):
+ Bar(x+1,y+1,w-2,h-2,0xff111214)
+ Line(x,y,w-1,0,0xff796b53); Line(x,y,0,h-1,0xff796b53)
+ Line(x+w-1,y,0,h-1,0xff39352f); Line(x,y+h-1,w-1,0,0xff39352f)
+ Line(x+2,y+2,w-5,0,0xff242324)
+
+
 def _HideSkin(self):
 	for child in getattr(self,'Corners',[]) + getattr(self,'Lines',[]): child.Hide()
 	if getattr(self,'Base',None): self.Base.Hide()
@@ -110,19 +129,20 @@ def _PanelRender(self):
 	if getattr(self,'modernHidden',False): return
 	x,y=self.GetGlobalPosition()
 	w,h=self.GetWidth(),self.GetHeight()
+	if getattr(self,'modernInventory',False):
+		InventoryPanel(x,y,170,236)
+		InventoryPanel(x+178,y,188,380)
+		for row in range(9):
+			for col in range(5): InventoryCell(x+190+col*32,y+62+row*32,32,32)
+		for sx,sy,sw,sh in self.modernEquipSlots:
+			InventoryCell(x+13+sx,y+41+sy,sw,sh)
+		return
 	Card(x+3,y+5,w,h,0x50000000,0x00000000)
 	Card(x,y,w,h)
 	Line(x+8,y+3,w-16,0,0xffb3a184)
 	Line(x+8,y+h-3,w-16,0,0xff090a0d)
 	for xx,yy,dx,dy in ((x+5,y+5,1,1),(x+w-5,y+5,-1,1),(x+5,y+h-5,1,-1),(x+w-5,y+h-5,-1,-1)):
 	 Line(xx,yy,12*dx,0,ACCENT); Line(xx,yy,0,12*dy,ACCENT)
-	if getattr(self,'modernInventory',False):
-		Card(x+16,y+57,172,230,0xff13151a,0xff4c4840)
-		Card(x+202,y+57,360,230,0xff13151a,0xff4c4840)
-		for row in range(5):
-			for col in range(9): Card(x+212+col*38,y+78+row*38,34,34,0xff23252b,0xff59564f,2)
-		for sx,sy,sw,sh in self.modernEquipSlots:
-			Card(x+27+sx,y+79+sy,sw,sh,0xff23252b,0xff7a705c,2)
 
 def _ButtonRender(self):
 	name=getattr(self,'modernVisual','').lower()

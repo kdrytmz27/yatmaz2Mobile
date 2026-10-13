@@ -3,30 +3,19 @@ import item
 
 EQUIPMENT_START_INDEX = 90
 
-# The tall layout stacks the item grid under the equipment panel and needs 565 px.
-# Screens that cannot show it get a wide layout instead: the grid moves next to the
-# equipment panel and holds the same 45 slots as 9 columns of 5 rows.
-WIDE = True
-
-if WIDE:
-	WINDOW_WIDTH = 580
-	WINDOW_HEIGHT = 352
-	GRID_X, GRID_Y = 212, 78
-	GRID_COLUMNS, GRID_ROWS = 9, 5
-	TAB_X, TAB_Y = 212, 295
-else:
-	WINDOW_WIDTH = 176
-	WINDOW_HEIGHT = 565
-	GRID_X, GRID_Y = 8, 246
-	GRID_COLUMNS, GRID_ROWS = 5, 9
-	TAB_X, TAB_Y = 10, 33 + 191
+# Paired right-side panels; preserve native 5-column item footprint.
+WINDOW_WIDTH = 366
+WINDOW_HEIGHT = 380
+GRID_X, GRID_Y = 190, 62
+GRID_COLUMNS, GRID_ROWS = 5, 9
+TAB_X, TAB_Y = 190, 32
 
 window = {
 	"name" : "InventoryWindow",
 
 	## 600 - (width + żŔ¸ĄÂĘŔ¸·Î şÎĹÍ ¶çżě±â 24 px)
-	"x" : (SCREEN_WIDTH - WINDOW_WIDTH) / 2,
-	"y" : (SCREEN_HEIGHT - WINDOW_HEIGHT) / 2,
+	"x" : max(8, SCREEN_WIDTH - WINDOW_WIDTH - 26),
+	"y" : max(8, (SCREEN_HEIGHT - WINDOW_HEIGHT) / 2),
 
 	"style" : ("movable", "float",),
 
@@ -328,26 +317,26 @@ window = {
 	),
 }
 
-# Preserve all named controls and server slot IDs while replacing the layout.
-def modern_node(node):
-	name=node.get("name", "")
-	if name == "TitleName":
-		node.update(x=18,y=3,text="INVENTORY",text_horizontal_align="left")
-	elif name == "Equipment_Base":
-		node.update(type="window",x=24,y=76,width=160,height=204)
-		node.pop("image",None)
-	elif name == "ItemSlot":
-		node.update(x_step=32,y_step=32,x_blank=6,y_blank=6)
-		node.pop("image",None)
-	elif name == "Money_Slot":
-		node.update(x=32,y=309)
-		node.pop("horizontal_align",None); node.pop("vertical_align",None)
-	elif name == "Money_Icon":
-		node.update(x=-16,y=3)
-	for child in node.get("children",()): modern_node(child)
-modern_node(window)
+# Change presentation only; original named controls keep their callbacks.
+def inventory_theme(node):
+ name=node.get("name", "")
+ if name == "TitleBar": node.update(x=184,y=6,width=176)
+ elif name == "TitleName": node.update(x=76,y=3,text="Envanter",text_horizontal_align="center")
+ elif name == "Equipment_Base":
+  node.update(type="window",x=10,y=38,width=150,height=190)
+  node.pop("image",None)
+ elif name == "ItemSlot":
+  node.update(x_step=32,y_step=32,x_blank=0,y_blank=0)
+  node.pop("image",None)
+ elif name == "Money_Slot":
+  node.update(x=204,y=355)
+  node.pop("horizontal_align",None); node.pop("vertical_align",None)
+ elif name == "Money_Icon": node.update(x=-15,y=3)
+ elif name == "Inventory_Tab_01_Print": node["text"]="1"
+ elif name == "Inventory_Tab_02_Print": node["text"]="2"
+ for child in node.get("children",()): inventory_theme(child)
+inventory_theme(window)
 board=window["children"][0]
-board["children"] += (
-	{"name":"EquipmentHeading","type":"text","x":26,"y":42,"text":"EQUIPMENT","color":0xff9baabe},
-	{"name":"BackpackHeading","type":"text","x":212,"y":42,"text":"BACKPACK   /   45 SLOTS","color":0xff9baabe},
-)
+board["children"] += ({"name":"EquipmentTitleBar","type":"titlebar","style":("attach",),"x":6,"y":6,"width":158,"children":(
+ {"name":"EquipmentHeading","type":"text","x":67,"y":3,"text":"Ekipman","text_horizontal_align":"center"},
+)},)

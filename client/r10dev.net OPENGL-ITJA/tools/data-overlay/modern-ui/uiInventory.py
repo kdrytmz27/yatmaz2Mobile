@@ -157,7 +157,7 @@ class BeltInventoryWindow(ui.ScriptWindow):
 	## Calculate and return BASE position based on current inventory position. Hard-coded numbers are unavoidable.
 	def GetBasePosition(self):
 		x, y = self.wndInventory.GetGlobalPosition()
-		return x - 148, y + min(241, max(0, self.wndInventory.GetHeight() - self.GetHeight()))
+		return x - 148, y + 38
 		
 	def AdjustPositionAndSize(self):
 		bx, by = self.GetBasePosition()
@@ -299,6 +299,7 @@ class InventoryWindow(ui.ScriptWindow):
 			wndItem = self.GetChild("ItemSlot")
 			board = self.GetChild("board")
 			board.modernInventory = True
+			self.GetChild("EquipmentTitleBar").SetCloseEvent(ui.__mem_func__(self.Close))
 			board.modernEquipSlots = ((39,37,32,64),(39,2,32,32),(39,145,32,32),(75,67,32,32),(3,3,32,96),(114,67,32,32),(114,35,32,32),(2,145,32,32),(75,145,32,32),(114,2,32,32),(75,35,32,32),(39,106,32,32))
 			wndEquip = self.GetChild("EquipmentSlot")
 			self.GetChild("TitleBar").SetCloseEvent(ui.__mem_func__(self.Close))
