@@ -1,0 +1,18 @@
+# Godot 4 projesi
+.godot/
+.import/
+export.cfg
+export_presets.cfg
+*.translation
+
+# İhraç (build) çıktıları
+/build/
+*.apk
+*.aab
+*.exe
+*.pck
+*.zip
+
+# Sistem
+.DS_Store
+Thumbs.db
