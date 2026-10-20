@@ -1,0 +1,244 @@
+{
+  "sunucu": "185.128.114.87",
+  "giris_portlari": [
+    30001,
+    30002,
+    30003,
+    30004
+  ],
+  "metin_vnumlari": [
+    8026
+  ],
+  "tum_metinler": true,
+  "http_portu": 30210,
+  "baslama_araligi_sn": 3,
+  "zaman_asimi_sn": 15,
+  "yeniden_baglan_sn": 10,
+  "yeniden_baglan_tavan_sn": 120,
+  "oyuna_giris_bekle_sn": 3,
+  "yukleme_sonrasi_sn": 0.5,
+  "sessizlik_sn": 300,
+  "ilk_gorus_sn": 15,
+  "hata_bekleme_carpani": 1.0,
+  "hesaplar": [
+    {
+      "kanal": 1,
+      "kullanici": "izleyici8",
+      "sifre": "0212302321",
+      "pin": "2727",
+      "karakter_yuvasi": 0
+    },
+    {
+      "kanal": 2,
+      "kullanici": "",
+      "sifre": "",
+      "pin": "",
+      "karakter_yuvasi": 0
+    },
+    {
+      "kanal": 3,
+      "kullanici": "",
+      "sifre": "",
+      "pin": "",
+      "karakter_yuvasi": 0
+    },
+    {
+      "kanal": 4,
+      "kullanici": "",
+      "sifre": "",
+      "pin": "",
+      "karakter_yuvasi": 0
+    },
+    {
+      "kanal": 5,
+      "kullanici": "",
+      "sifre": "",
+      "pin": "",
+      "karakter_yuvasi": 0
+    },
+    {
+      "kanal": 6,
+      "kullanici": "",
+      "sifre": "",
+      "pin": "",
+      "karakter_yuvasi": 0
+    },
+    {
+      "kanal": 7,
+      "kullanici": "",
+      "sifre": "",
+      "pin": "",
+      "karakter_yuvasi": 0
+    },
+    {
+      "kanal": 8,
+      "kullanici": "",
+      "sifre": "",
+      "pin": "",
+      "karakter_yuvasi": 0
+    },
+    {
+      "kullanici": "izleyici1",
+      "sifre": "0212302321",
+      "pin": "2727",
+      "karakter_yuvasi": 0,
+      "kanal": 2
+    },
+    {
+      "kullanici": "izleyici2",
+      "sifre": "0212302321",
+      "pin": "2727",
+      "karakter_yuvasi": 0,
+      "kanal": 3
+    },
+    {
+      "kullanici": "izleyici3",
+      "sifre": "0212302321",
+      "pin": "2727",
+      "karakter_yuvasi": 0,
+      "kanal": 4
+    },
+    {
+      "kullanici": "izleyici4",
+      "sifre": "0212302321",
+      "pin": "2727",
+      "karakter_yuvasi": 0,
+      "kanal": 5
+    },
+    {
+      "kullanici": "izleyici5",
+      "sifre": "0212302321",
+      "pin": "2727",
+      "karakter_yuvasi": 0,
+      "kanal": 6
+    },
+    {
+      "kullanici": "izleyici6",
+      "sifre": "0212302321",
+      "pin": "2727",
+      "karakter_yuvasi": 0,
+      "kanal": 7
+    },
+    {
+      "kullanici": "spyderman1",
+      "sifre": "0212302321",
+      "pin": "2727",
+      "karakter_yuvasi": 0,
+      "kanal": 8,
+      "rol": "buff"
+    },
+    {
+      "kullanici": "izleyici7",
+      "sifre": "0212302321",
+      "pin": "2727",
+      "karakter_yuvasi": 0,
+      "kanal": 8
+    },
+    {
+      "kullanici": "izleyici9",
+      "sifre": "0212302321",
+      "pin": "2727",
+      "karakter_yuvasi": 0,
+      "ada": 2,
+      "kanal": 1
+    },
+    {
+      "kullanici": "izleyici10",
+      "sifre": "0212302321",
+      "pin": "2727",
+      "karakter_yuvasi": 0,
+      "ada": 2,
+      "kanal": 2
+    },
+    {
+      "kullanici": "izleyici11",
+      "sifre": "0212302321",
+      "pin": "2727",
+      "karakter_yuvasi": 0,
+      "ada": 2,
+      "kanal": 3
+    },
+    {
+      "kullanici": "izleyici12",
+      "sifre": "0212302321",
+      "pin": "2727",
+      "karakter_yuvasi": 0,
+      "ada": 2,
+      "kanal": 4
+    },
+    {
+      "kullanici": "izleyici13",
+      "sifre": "0212302321",
+      "pin": "2727",
+      "karakter_yuvasi": 0,
+      "ada": 2,
+      "kanal": 5
+    },
+    {
+      "kullanici": "izleyici14",
+      "sifre": "0212302321",
+      "pin": "2727",
+      "karakter_yuvasi": 0,
+      "ada": 2,
+      "kanal": 6
+    },
+    {
+      "kullanici": "izleyici15",
+      "sifre": "0212302321",
+      "pin": "2727",
+      "karakter_yuvasi": 0,
+      "ada": 2,
+      "kanal": 7
+    },
+    {
+      "kullanici": "izleyici16",
+      "sifre": "0212302321",
+      "pin": "2727",
+      "karakter_yuvasi": 0,
+      "ada": 2,
+      "kanal": 8
+    }
+  ],
+  "tarama_bakis_sn": 5.0,
+  "telegram": {
+    "acik": false,
+    "token": "7760406607:AAHYiXj3OVgNi8Hs2LIa-PSPJUGQV644XNI",
+    "sohbet": "-5508417390",
+    "olaylar": {
+      "metin_var": true,
+      "kesiliyor": true,
+      "kesildi": true,
+      "dusman": false,
+      "yaninda": true,
+      "hata": true,
+      "tur_ozeti": true,
+      "her_ziyaret": false
+    }
+  },
+  "olunce_canlan": false,
+  "yerine_don": false,
+  "dusmanlar": [
+    "NerSo",
+    "anqarax",
+    "TrBaBaSuRaTr",
+    "wistaa",
+    "SHOWMAKER",
+    "E300",
+    "Premetaus",
+    "DeJaVu06"
+  ],
+  "web_parola": "c3f82c96bf",
+  "web_acik": true,
+  "web_portu": 30210,
+  "buff_acik": true,
+  "buff_hedef": "YIKAR",
+  "buff_yardim_vnum": 94,
+  "buff_guc_vnum": 96,
+  "buff_menzil_m": 4.0,
+  "buff_aralik_sn": 5.0,
+  "buff_skill_gecikme_sn": 0.0,
+  "dusman_ses": false,
+  "olunce_yeniden_gir": true,
+  "yeniden_gir_gecikme_sn": 10.0,
+  "buff_takip": true
+}

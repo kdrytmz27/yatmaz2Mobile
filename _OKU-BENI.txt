@@ -1,0 +1,67 @@
+ROMIA 2 BOT — TEMIZ KLASOR
+==========================
+Bu klasor, dagitik "romia2BOT" + "RomiaRootsuz" yigininden ayiklanmis
+sadece gercek botlar/paneller/rootsuz kaynaklar ve dokumanlardir.
+Derleme araclari (Ghidra, NDK, Il2CppDumper, Frida, injector, build)
+DAHIL EDILMEDI — gerektiginde orijinal Downloads klasorunde duruyor.
+
+
+KLASORLER
+---------
+PC-Python\        Masaustu botlar ve paneller (Python)
+PC-Python\tools\  Panellerin ihtiyac duydugu cekirdek moduller + arastirma araclari
+Rootsuz-Kaynak\   Telefon (rootsuz) surumun Java/smali kaynaklari + imza/kaynak zip
+Rootsuz-APK\      Kurulabilir APK'lar (14 VPN7x varyanti + Metin-Izleyici + R2-Panel)
+docs\             Protokol/offset/API notlari
+
+
+PC BOTLARI NASIL CALISIR
+------------------------
+  python PC-Python\r2.py          -> R2 baslatici menu (Tam Bot + Metin Izleyici)
+  python PC-Python\tambot.py      -> Ana bot (farm/savas)
+  python PC-Python\metin_izleyici_panel.py   -> Metin Izleyici paneli
+  python PC-Python\kral_panel.py  -> Krali Yakala
+  python PC-Python\pazar_panel.py -> Pazar firsat tarayici
+
+Bot varsayilan olarak KURU CALISIR (paket gondermez); gondermek icin
+arayuzden kuru calisma kutusunu kapatman ve APK tarafindaki uc kapiyi
+(proxy/enjeksiyon/kanal) acman gerekir.
+
+
+EKSIKLER / KURULUM (bu bilgisayarda)
+------------------------------------
+1) ADB (Android platform-tools) KURULU DEGIL. Telefon/emulator baglantisi
+   gerektiren her sey (tambot, paneller, adb forward) bunsuz calismaz.
+   Kur: https://developer.android.com/tools/releases/platform-tools
+   Indir, bir klasore ac, o klasoru PATH'e ekle. Kodlar artik "adb"yi
+   PATH'ten otomatik buluyor (sabit Abdulkadir yolu kaldirildi).
+
+2) romia2_panel.py icin: pip install frida   (eski Frida tabanli panel)
+
+3) Genel: pip install  (gereken paketler kullaninca belli olur; cogu
+   standart kutuphane, tkinter dahili gelir)
+
+
+ROOTSUZ (TELEFON) SURUM
+-----------------------
+En son uzerinde calisilan hat: OtoBuff + Harita (kaynak klasoru adi:
+orijinaldeki "guncelleme-otobuff"). Rootsuz-Kaynak\ icindeki Java/smali
+dosyalari APK'ya enjekte edilen overlay/oto-buff modulleridir.
+Rootsuz-APK\ altindaki 14 APK ayri ozellik denemeleridir (hepsi farkli):
+  OtoIksir / OtoIksir2..4 / -Coklu, OtoBuff, Harita, IksirSecim,
+  UI/UI2/UI3, Teshis/Teshis2, CH-Duzeltme.
+Not: APK'lar apktool ile paketlendigi icin tarih/versiyon damgalari
+sifirlanmis; "en yeni" metadata'dan anlasilamiyor, isimden gidilmeli.
+
+
+DUZELTMELER (bu temiz kopyada yapildi)
+--------------------------------------
+- Tum sabit "C:\Users\Abdulkadir\...\adb.exe" yollari -> "adb" (PATH'ten bulunur)
+- romia2_panel.py: adb otomatik bulma fonksiyonu eklendi
+- ft.py / at.py / tools\akis_analiz.py: tools yolu goreceli hale getirildi
+- Ana botlarin hepsi python py_compile ile dogrulandi (sozdizimi OK)
+
+Not: tools\ icindeki bazi ARASTIRMA scriptleri (parser_dogrula, opcode_*,
+pazar_tara, akis_analiz'in ornek yolu) hala eski log/pcap/asset yollarina
+bakiyor. Bunlar sadece o eski kayitlarla calisirken gerekli; normal bot
+kullaniminda etkisi yok.
